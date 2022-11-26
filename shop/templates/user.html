@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block Content %}
+    <div class="fon-2">
+        <div class="bg-opacity-50">
+            <div class="container">
+                <div class="row">
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark opacity-100">
+                        <button class="navbar-toggler position-absolute top-0 end-0" type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="container-fluid">
+                            <a class="" href="/">
+                                <img src="https://i.postimg.cc/dQnVD2TB/Icon.png" class="img-fluid" width="175"
+                                     height="60">
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page"
+                                               href="/">Главная</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" aria-current="page" href="/agreement">Соглашение</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" aria-current="page" href="#">Поддержка</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page"
+                                               href="https://vk.com/zdestupa">Группа
+                                                вк</a>
+                                        </li>
+                                    </ul>
+                                    <div class="signed__balance">
+                                        <button class="avatar-btn d-none d-md-flex">+
+                                        </button>
+                                    </div>
+                                    <a href="http://localhost:63342/practika/User.html?_ijt=l187ap4ds6b5hmlca1ja9e9g83"
+                                       class="signed__avatar img-fluid">
+                                        <img class="avatar d-none d-md-flex"
+                                             src="https://sun9-north.userapi.com/sun9-79/s/v1/ig2/Z_pRERHjFFKTq1MxUN8adbdXbNBpWLejSYkHgD65kFw5-J9iAi6A9KLOwVpwvbjPyy_xFb5iAU_MTD5j_7aFuOks.jpg?size=810x1080&quality=95&type=album">
+                                        <img class="avatar2 d-flex d-md-none"
+                                             src="https://sun9-north.userapi.com/sun9-79/s/v1/ig2/Z_pRERHjFFKTq1MxUN8adbdXbNBpWLejSYkHgD65kFw5-J9iAi6A9KLOwVpwvbjPyy_xFb5iAU_MTD5j_7aFuOks.jpg?size=810x1080&quality=95&type=album">
+                                    </a>
+                                </div>
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fon3 bg-light">
+        <div class="container">
+            <div class="row profile__row pt-5">
+                <div class="profile__avatar-box col-12 col-md-2 px-0">
+                    <div class="profile__avatar">
+                        <img class="profile_img"
+                             src="https://sun1.userapi.com/sun1-56/s/v1/ig2/x0X6JJTjH2SWQpz3Hb9dlKHvVyzs8ZcguKqHlobFCIRXFoczQ-rqQvwJCn0QARI6BwuKC5m1iaQd-5JwouV652Cg.jpg?size=200x200&amp;quality=95&amp;crop=111,557,1616,1616&amp;ava=1"
+                             alt="">
+                    </div>
+                </div>
+                <div class="profile__info-box col-12 col-md-4 px-0">
+                    <div class="profile__id">ID 1</div>
+                    <div class="profile__name">Роман</div>
+                    <div class="profile__balance">1000 рублей на балансе</div>
+                </div>
+                <div class="profile__stats col-12 col-md-1">
+                    <div class="profile__stat">
+                        <span>0</span>
+                        <span>покупок</span>
+                    </div>
+                </div>
+                <div class="profile__topup col-12 col-md-3">
+                    <div class="profile__topup_head">
+                        <button type="button" class="button btn-md modal__trigger profile__btn"
+                                data-popupselector="#addMoneyModal">
+                            <span>Пополнить <span>баланс</span></span>
+                        </button>
+                        <i class="bi bi-gear profile__settings-btn" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="profile__tabs">
+                    <div class="profile__tab prev disabled"><span></span></div>
+                    <div class="profile__tab active" data-target="user-buy-history">Покупки</div>
+                    <div class="profile__tab next disabled"><span></span></div>
+                </div>
+                <div class="profile__tab-data user-buy-history active">
+
+                    <div id="p1" data-pjax-container="" data-pjax-push-state="" data-pjax-timeout="1000">
+                        <div class="profile__items profile__drops-container">
+                            {% for purchase in purchases %}
+                                <div class="profile__item ">
+
+                                    <div class="profile__item-col">
+                                    </div>
+
+                                    <div class="profile__item-col profile__item-name">
+                                        <span>{{ purchase.account }}</span>
+                                        <span>Аккаунт</span>
+                                        <span></span>
+                                    </div>
+
+                                    <div class="profile__item-col">
+                                        <span>{{ purchase.number_purchase }}</span>
+                                        <span>Номер покупки</span>
+                                    </div>
+                                    <div class="profile__item-col">
+                                        <span>{{ purchase.platform }}</span>
+                                        <span>Платформа</span>
+                                    </div>
+
+                                    <div class="profile__item-col profile__item-data">
+
+                                        <div><span class="px-1">{{ purchase.login }}</span><span>Логин</span></div>
+                                        <div><span class="px-1">{{ purchase.password }}</span><span>Пароль</span></div>
+                                    </div>
+
+                                    <div class="profile__item-col">
+                                        <span>{{ purchase.time }}</span>
+                                        <span>Время покупки</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

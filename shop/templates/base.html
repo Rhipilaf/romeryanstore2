@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>RomeryanStore</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="icon" href="https://i.postimg.cc/PJJ9KcSJ/icon-header.png" type="image">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+<body>
+<div class="wrapper">
+<div class="content_wrapper">
+    {% block Content %}
+    {% endblock %}
+</div>
+<footer class="footer clear">
+    <div class="container">
+        <div class="row">
+            <div class="footer-logo col-12 py-5 col-md-3">
+                <img src="https://i.postimg.cc/vZjyVJbf/logo2.png" class="logo img-fluid d-none d-md-flex">
+                <img src="https://i.postimg.cc/g0yMBmJL/logo3.png"
+                     class="logo-small logo img-fluid d-flex d-md-none">
+            </div>
+            <div class="col-12 col-md-1">
+
+            </div>
+            <ul class="footer-navigation mr-3 col-12 col-md-8">
+                <a class="n-link active" aria-current="page"
+                   href="http://localhost:63342/practika/Main.html?_ijt=lo1ch99ictfpo8aj53sa8fe84">Главная</a>
+                <a class="n-link active" aria-current="page" href="#" style="text-decoration: none">Соглашение</a>
+                <a class="n-link active" aria-current="page" href="#" style="text-decoration: none">Поддержка</a>
+                <a class="n-link active" aria-current="page" href="https://vk.com/zdestupa"
+                   style="text-decoration: none">Группа вк</a>
+
+                <div class="footer-copyright">
+                    Платформа для продажи цифровых товаров. Торговый агрегатор по оказанию услуг в сфере торговли.
+                    Все
+                    закупаемые ключи приобретаются у официальных поставщиков. Все названия продуктов, компаний и
+                    марок,
+                    логотипы и товарные знаки являются собственностью соответствующих владельцев.
+                </div>
+            </ul>
+        </div>
+    </div>
+</footer>
+</div>
+
+<script type="text/javascript">
+    let progressbar = document.getElementById("progressbar")
+    let percent = document.getElementById("percent")
+
+    let totalHeight = document.body.scrollHeight - window.innerHeight;
+    window.onscroll = function () {
+        let progress = (window.pageYOffset / totalHeight) * 100;
+        progressbar.style.height = progress + "%";
+        percent.innerHTML = "Page scrolled" + Math.round(progress) + "%"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
