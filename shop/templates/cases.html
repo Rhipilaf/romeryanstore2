@@ -55,86 +55,94 @@
         </div>
     </div>
 </div>
-<div class="bg-light pt-1 lb">
+<div class="bg-light lb pt-1">
     <div class="clear container good-header-container">
-
         <div class="breadcrumbs21">
             <a class="sil"
                href="/">Главная</a>
-            <span>{{ account.title }}</span>
+            <span>Ключи в кейсах</span>
         </div>
         <div class="good-title pt-3">
-            {{ account.title }}
+            Ключи в кейсах
+        </div>
+        <div class="cases-collection">
+            Тут ты можешь испытать свою удачу.<br>В каждой подборке собраны позиции крутых ключей к играм.
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="bg-white buy">
-                <div class="buy-item_price pt-3">
-                    <span class="rub-sm">₽</span>
-                    <span>{{ account.price }}</span>
-                </div>
-                <div class="buy-item-actions">
-                    <button type="button" class="button_buy">
-                        Купить
-                    </button>
-                    <div class="buy-item-info">
-                        <div class="buy-item-stats">
-                            <div class="buy-item-stat">
-                                <span>{{ account.availability }}</span>
-                                <span>в наличии</span>
-                            </div>
-                            <div class="buy-item-stat">
-                                <span>{{ account.sales }}</span>
-                                <span>продаж</span>
-                            </div>
-                            <div class="buy-item-stat">
-                                <span>0</span>
-                                <span>отзывов</span>
-                            </div>
-                        </div>
-
-                        <div class="buy-item-about">
-                            <div class="buy-item-info-title">Информация о игре</div>
-                            <div class="buy-item-details">
-                                <div>
-                                    <span>Жанр</span>
-                                    <span>{{ account.genre }}</span>
-                                </div>
-                                <div>
-                                    <span>Платформа</span>
-                                    <span>{{ account.platform }}</span>
-                                </div>
-                                <div>
-                                    <span>Тип</span>
-                                    <span>{{ account.type }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tabs col-9">
-                <input type="radio" name="tab" id="tab-nav-1" checked>
-                <label for="tab-nav-1">Полное описание</label>
-
-                <input type="radio" name="tab" id="tab-nav-2" checked>
-                <label for="tab-nav-2">Отзывы</label>
-
-                <div class="tab">
-                    <div>
-                        <h2>Полное описание</h2>
-                        <p class="jb">{{ account.full_description }}</p>
-                    </div>
-                    <div>
-                        <h2>Отзывы<span class="item-main-tab-counter">0</span></h2>
-                        <p>Отзывов пока нет=3</p>
-                    </div>
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <div class="card-case rgb">
+                <div class="card_image"></div>
+                <div class="card_text">
+                    <h2>Сильвер кейс</h2>
+                    <p>Кейс с интересными играми по привлекательной цене</p>
                 </div>
             </div>
         </div>
-
+        <div class="col-12 col-md-4">
+            <div class="card-case rgb">
+                <div class="card_image2 card-image"></div>
+                <div class="card_text">
+                    <h2>Золотой кейс</h2>
+                    <p>Нет не единой проигрышной позиции</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="card-case rgb">
+                <div class="card_image3 card-image"></div>
+                <div class="card_text">
+                    <h2>Элитный кейс</h2>
+                    <p>Самый уникальный и выгодный</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
+</div>
+<div class="bg-white lb">
+    <div class="container">
+        <div class="good-title pt-5">
+            Удача или промах
+        </div>
+        <div class="cases-collection">
+            Тут ты можешь испытать свою удачу.<br> Все или ничего!!!
+        </div>
+    </div>
+    <div class="container">
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <div class="card-case">
+                <div class="card_image"></div>
+                <div class="card_text">
+                    <h2>Case</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod
+                        deserunt eligendi dolor</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="card-case">
+                <div class="card_image"></div>
+                <div class="card_text">
+                    <h2>Case</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod
+                        deserunt eligendi dolor</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="card-case">
+                <div class="card_image"></div>
+                <div class="card_text">
+                    <h2>Case</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod
+                        deserunt eligendi dolor</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 {% endblock %}

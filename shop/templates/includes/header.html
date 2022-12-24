@@ -1,0 +1,55 @@
+  <div class="container">
+                    <div class="row">
+                        <nav class="navbar navbar-expand-lg navbar-dark bg-dark opacity-100">
+                            <button class="navbar-toggler position-absolute top-0 end-0" type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="container-fluid">
+                                <a class="" href="/">
+                                    <img src="https://i.postimg.cc/dQnVD2TB/Icon.png" class="img-fluid" width="175"
+                                         height="60">
+                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" aria-current="page"
+                                                   href="/">Главная</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" aria-current="page" href="/agreement">Соглашение</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" aria-current="page" href="#">Поддержка</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link active" aria-current="page"
+                                                   href="https://vk.com/zdestupa">Группа
+                                                    вк</a>
+                                            </li>
+                                        </ul>
+                                        {% if user.is_authenticated %}
+                                            {% if user.polzovatel.image %}
+                                                <a href="/purchases" class="signed__avatar img-fluid">
+                                                    <img class="avatar" src="{{ user.polzovatel.image.url }}">
+                                                </a>
+                                                <a href="{% url "kabinet_logout" %}"><i class="bi bi-x account-exit"></i></a>
+
+                                            {% else %}
+                                                <a href="/purchases" class="signed__avatar img-fluid">
+                                                    <img class="avatar" src="https://i.postimg.cc/jd1b2gk9/glush.jpg">
+                                                </a>
+                                                <a href="{% url "kabinet_logout" %}"><i class="bi bi-x account-exit"></i></a>
+                                            {% endif %}
+                                        {% else %}
+                                            <button type="button" class="btn-profile" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal">Авторизация <i
+                                                    class="bi bi-person"></i></button>
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>

@@ -1,6 +1,10 @@
 from django.contrib import admin
 
-from shop.models import Purchases, Account
+from shop.models import Purchases, Account, Info, Polzovatel
+
+class PurchasesInline(admin.TabularInline):
+    model = Purchases
+    extra = 0
 
 @admin.register(Purchases)
 class PurchasesAdmin(admin.ModelAdmin):
@@ -62,3 +66,20 @@ class GameAdmin(admin.ModelAdmin):
     save_as = True
     save_on_top = True
 
+@admin.register(Info)
+class InfoAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'title',
+        'description',
+    ]
+
+@admin.register(Polzovatel)
+class PolzovatelAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'nickname',
+        'image',
+        'mail'
+    ]
+    inlines = [PurchasesInline]

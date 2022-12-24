@@ -1,6 +1,7 @@
+
 from django.shortcuts import render
 
-from shop.models import Purchases, Account
+from shop.models import Purchases, Account, Info
 
 
 def render_home(request):
@@ -21,3 +22,10 @@ def render_agreement(request):
 def render_detail_game(request, id_game):
     account = Account.objects.get(id=id_game)
     return render(request, "game.html", {'account': account})
+
+def render_cases(request):
+    return render(request, "cases.html", {})
+
+def render_info(request):
+    infos = Info.objects.all()
+    return render(request, "home.html", {'info': infos})

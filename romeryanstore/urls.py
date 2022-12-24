@@ -18,15 +18,20 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from shop.views import render_home, render_user, render_game, render_agreement, render_detail_game
+from shop.api import Login, Logout, Registration
+from shop.views import render_home, render_user, render_game, render_agreement, render_detail_game, render_cases
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('cases', render_cases),
     path('game/<id_game>', render_detail_game, name="render_detail_game"),
     path('agreement', render_agreement),
     path('game', render_game),
     path('purchases', render_user),
+    path('login', Login.as_view(), name='kabinet_login'),
+    path('logout', Logout.as_view(), name='kabinet_logout'),
+    path('registration', Registration.as_view(), name='kabinet_registration'),
     path('', render_home),
-    path('admin/', admin.site.urls),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -13,7 +13,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="container-fluid">
-                        <a class="" href="http://localhost:63342/practika/Main.html?_ijt=lo1ch99ictfpo8aj53sa8fe84">
+                        <a class="" href="/">
                             <img src="https://i.postimg.cc/dQnVD2TB/Icon.png" class="img-fluid" width="175"
                                  height="60">
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -23,7 +23,7 @@
                                            href="/">Главная</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="#">Соглашение</a>
+                                        <a class="nav-link" aria-current="page" href="/agreement">Соглашение</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" aria-current="page" href="#">Поддержка</a>
@@ -34,17 +34,19 @@
                                             вк</a>
                                     </li>
                                 </ul>
-                                <div class="signed__balance">
-                                    <button class="avatar-btn d-none d-md-flex">+
-                                    </button>
-                                </div>
-                                <a href="http://localhost:63342/practika/User.html?_ijt=l187ap4ds6b5hmlca1ja9e9g83"
-                                   class="signed__avatar img-fluid">
-                                    <img class="avatar d-none d-md-flex"
-                                         src="https://sun9-north.userapi.com/sun9-79/s/v1/ig2/Z_pRERHjFFKTq1MxUN8adbdXbNBpWLejSYkHgD65kFw5-J9iAi6A9KLOwVpwvbjPyy_xFb5iAU_MTD5j_7aFuOks.jpg?size=810x1080&quality=95&type=album">
-                                    <img class="avatar2 d-flex d-md-none"
-                                         src="https://sun9-north.userapi.com/sun9-79/s/v1/ig2/Z_pRERHjFFKTq1MxUN8adbdXbNBpWLejSYkHgD65kFw5-J9iAi6A9KLOwVpwvbjPyy_xFb5iAU_MTD5j_7aFuOks.jpg?size=810x1080&quality=95&type=album">
-                                </a>
+                                {% if user.is_authenticated %}
+                                        {%  if user.polzovatel.image %}
+                                            <a href="/purchases"  class="signed__avatar img-fluid">
+                                        <img class="avatar" src="{{ user.polzovatel.image.url }}">
+                                            </a>
+                                            {% else %}
+                                        <a href="/purchases" class="signed__avatar img-fluid">
+                                        <img class="avatar" src="https://i.postimg.cc/jd1b2gk9/glush.jpg">
+                                        </a>
+                                            {% endif %}
+                                        {% else %}
+                                        <div>Кнопка авторизации</div>
+                                        {% endif %}
                             </div>
                         </a>
                     </div>

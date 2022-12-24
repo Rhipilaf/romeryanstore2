@@ -1,15 +1,26 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
 # Create your models here.
 from django.template.defaultfilters import safe
 
+class Polzovatel(models.Model):
+    class Meta():
+        verbose_name = 'Пользователь сайта'
+        verbose_name_plural = 'Пользователь сайта'
+        db_table = 'polzovatel'
 
+    user = models.OneToOneField(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+    nickname = models.CharField('Никнейм', max_length=255, blank=True, null=True)
+    image = models.ImageField('Фото', null=True, blank=True)
+    mail = models.EmailField('Почта', unique=True, null=True, blank=True)
 class Purchases(models.Model):
     class Meta:
         verbose_name = 'Покупка'
         verbose_name_plural = 'Покупки'
 
+    polzovatel = models.ForeignKey(Polzovatel, verbose_name='Пользователь', on_delete=models.CASCADE)
     account = models.CharField('Аккаунт', max_length=255)
     number_purchase = models.CharField('Номер заказа', max_length=255)
     platform = models.CharField('Платформа', max_length=255)
@@ -28,7 +39,7 @@ class Account(models.Model):
 
     title = models.CharField('Название', max_length=255)
     description = models.CharField('Описание', max_length=300)
-    full_description = models.CharField('Полное описание', max_length=1000)
+    full_description = models.TextField('Полное описание', max_length=1500)
     price = models.CharField('Цена', max_length=255)
     availability = models.CharField('Наличие', max_length=255)
     sales = models.CharField('Кол-во продаж', max_length=255)
@@ -45,3 +56,12 @@ class Account(models.Model):
 
     def __str__(self):
         return self.title
+
+class Info(models.Model):
+    title = models.CharField('Заглавие', max_length=255)
+    description = models.CharField('Описание', max_length=255)
+    photo = models.ImageField('Картинка', null=True, blank=True, db_index=True)
+
+    class Meta:
+        verbose_name = 'Инфо-карта'
+        verbose_name_plural = 'Инфо-карты'

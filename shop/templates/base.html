@@ -13,40 +13,165 @@
 </head>
 <body>
 <div class="wrapper">
-<div class="content_wrapper">
-    {% block Content %}
-    {% endblock %}
+   <div class="uvedomlenie-wrap ">
+    <div id="uvedomlenie" style="opacity:1!important;" class="toast bg-white fade hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header uvedomlenie-header bg-danger text-light">
+            <strong class="mr-auto uvedomlenie-title h6 text-uppercase pt-2">Уведомление</strong>
+            <div type="button" class="ms-auto mb-1 btn-zakrit" data-bs-dismiss="toast">
+                <span aria-hidden="true">×</span>
+            </div>
+        </div>
+        <div class="toast-body uvedomlenie-telo h6">Ошибка авторизации</div>
+    </div>
 </div>
-<footer class="footer clear">
-    <div class="container">
-        <div class="row">
-            <div class="footer-logo col-12 py-5 col-md-3">
-                <img src="https://i.postimg.cc/vZjyVJbf/logo2.png" class="logo img-fluid d-none d-md-flex">
-                <img src="https://i.postimg.cc/g0yMBmJL/logo3.png"
-                     class="logo-small logo img-fluid d-flex d-md-none">
-            </div>
-            <div class="col-12 col-md-1">
-
-            </div>
-            <ul class="footer-navigation mr-3 col-12 col-md-8">
-                <a class="n-link active" aria-current="page"
-                   href="http://localhost:63342/practika/Main.html?_ijt=lo1ch99ictfpo8aj53sa8fe84">Главная</a>
-                <a class="n-link active" aria-current="page" href="#" style="text-decoration: none">Соглашение</a>
-                <a class="n-link active" aria-current="page" href="#" style="text-decoration: none">Поддержка</a>
-                <a class="n-link active" aria-current="page" href="https://vk.com/zdestupa"
-                   style="text-decoration: none">Группа вк</a>
-
-                <div class="footer-copyright">
-                    Платформа для продажи цифровых товаров. Торговый агрегатор по оказанию услуг в сфере торговли.
-                    Все
-                    закупаемые ключи приобретаются у официальных поставщиков. Все названия продуктов, компаний и
-                    марок,
-                    логотипы и товарные знаки являются собственностью соответствующих владельцев.
+    <div class="content_wrapper">
+        {% block Content %}
+        {% endblock %}
+    </div>
+    <footer class="footer clear">
+        <div class="container">
+            <div class="row">
+                <div class="footer-logo col-12 py-5 col-md-3">
+                    <img src="https://i.postimg.cc/vZjyVJbf/logo2.png" class="logo img-fluid d-none d-md-flex">
+                    <img src="https://i.postimg.cc/g0yMBmJL/logo3.png"
+                         class="logo-small logo img-fluid d-flex d-md-none">
                 </div>
-            </ul>
+                <div class="col-12 col-md-1">
+
+                </div>
+                <ul class="footer-navigation mr-3 col-12 col-md-8">
+                    <a class="n-link active" aria-current="page"
+                       href="/">Главная</a>
+                    <a class="n-link active" aria-current="page" href="/agreement" style="text-decoration: none">Соглашение</a>
+                    <a class="n-link active" aria-current="page" href="#" style="text-decoration: none">Поддержка</a>
+                    <a class="n-link active" aria-current="page" href="https://vk.com/zdestupa"
+                       style="text-decoration: none">Группа вк</a>
+
+                    <div class="footer-copyright">
+                        Платформа для продажи цифровых товаров. Торговый агрегатор по оказанию услуг в сфере торговли.
+                        Все
+                        закупаемые ключи приобретаются у официальных поставщиков. Все названия продуктов, компаний и
+                        марок,
+                        логотипы и товарные знаки являются собственностью соответствующих владельцев.
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>
+<form method="post" action="{% url "kabinet_login" %}" class="modal fade modal-login" id="exampleModal" tabindex="-1"
+      aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    {% csrf_token %}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Авторизация</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form__group field">
+                    <input type="input" class="form__field"
+                           placeholder="Nickname/Email" name="nickname_mail"
+                           id="name" required>
+                    <label for="name" class="form__label">Никнейм/Почта</label>
+                </div>
+                <div class="form__group field">
+                    <input type="password" class="form__field"
+                           placeholder="password" name="parol"
+                           id="password" required>
+                    <label for="password" class="form__label">Пароль</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-av" type="submit">Войти на сайт</button>
+                <div class="checkbox">
+                    <input type="checkbox" id="user-remember" name="user-remember" value="yes">
+                    <label for="user-remember">Запомнить меня</label>
+                </div>
+                <a class="user_remember" href="#">Забыли пароль?</a>
+                <div class="reg">
+                    <div class="">Нет аккаунта? <a href="#" id="btn-show-modal-registrazia"
+                                                   class="text-danger btn-show-modal-registrazia" data-bs-toggle="modal"
+                                                   data-bs-target="#modal-registrazia">Зарегистрируйтесь</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</footer>
+</form>
+<form method="post" action="{% url "kabinet_registration" %}" class="modal fade modal-reg" id="modal-registrazia" tabindex="-1"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Регистрация</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form__group field">
+                    <input  class="form__field"
+                           placeholder="Nickname/Email" name="nickname" required>
+                    <label for="name" class="form__label">Никнейм</label>
+                </div>
+                <div class="form__group field">
+                    <input class="form__field"
+                           placeholder="Email" name="mail" required>
+                    <label for="email" class="form__label">Почта</label>
+                </div>
+                <div class="form__group field">
+                    <input type="password" class="form__field"
+                           placeholder="password" name="parol" required>
+                    <label for="password" class="form__label">Пароль</label>
+                </div>
+                <div class="form__group field">
+                    <input type="password" class="form__field"
+                           placeholder="repeat-password" name="parol" required>
+                    <label for="password" class="form__label">Повторите пароль</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-av" type="submit">Регистрация</button>
+                <div class="reg">
+                    <div class="">Уже есть аккаунт? <a href="#" id="exampleModal"
+                                                       class="text-danger exampleModal" data-bs-toggle="modal"
+                                                       data-bs-target="#exampleModal">Авторизируйтесь</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="modal fade" id="Modal-settings" tabindex="-1"
+     aria-labelledby="Modal-settings_lab" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Настройки аккаунта</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form__settings field">
+
+                    <input type="input" value="{% if user.polzovatel.mail %}{{ user.polzovatel.mail }}{% endif %}"
+                           class="form__field"
+                           placeholder="Email" name="Email"
+                           id="name" required>
+                    <label for="name" class="form__label">Email</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-av" type="submit">Сохранить</button>
+                <div class="reg">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -57,7 +182,6 @@
     window.onscroll = function () {
         let progress = (window.pageYOffset / totalHeight) * 100;
         progressbar.style.height = progress + "%";
-        percent.innerHTML = "Page scrolled" + Math.round(progress) + "%"
     }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -66,5 +190,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
         crossorigin="anonymous"></script>
+<script src="{% static 'jquery-3.6.3.min.js' %}"></script>
+<script src="{% static 'script.js' %}"></script>
 </body>
 </html>
