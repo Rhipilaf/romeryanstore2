@@ -743,7 +743,6 @@ ul {
     display: flex;
     flex-flow: column;
     justify-content: center;
-    margin-left: 30px;
 }
 
 .profile__topup_head {
@@ -1443,6 +1442,7 @@ body {
 
 .jb{
      white-space: pre-wrap;
+    color: black;
 }
 
 .card-m{
@@ -1561,12 +1561,14 @@ body {
     transition: color .3s ease-in-out;
     cursor: pointer;
     margin-top: -30px;
+    z-index: 2;
 }
 
 @media (max-width: 730px) {
     .account-exit {
         width: 21px;
         height: 21px;
+        margin-top: 2px;
     }
 }
 
@@ -1612,4 +1614,98 @@ body {
 .uvedomlenie-wrap .uvedomlenie-telo {
     color: #5A5F6E !important;
     font-weight: 400 !important;
+}
+
+.h {
+    height: 392px;
+}
+
+.per {
+    color: #9192a6;
+    font-size: 18px;
+    text-align: center;
+}
+
+.tabs {
+  overflow: hidden;
+  border-radius: 15px;
+}
+.tabs__head {
+    color: black;
+    border: 1px solid purple;
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.tabs__caption {
+     flex: 1;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 8px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: var(--color);
+  opacity: 0.6;
+  background: var(--primary);
+  transition: 0.25s;
+}
+.tabs__caption:hover {
+  opacity: 0.8;
+}
+.tabs__caption_active {
+  opacity: 1;
+  background: var(--primary);
+}
+.tabs__body {
+    border: 1px solid purple;
+  background: var(--primary);
+  position: relative;
+  top: -2px;
+  transition: 0.25s;
+}
+.tabs__content {
+  display: none;
+  padding: 30px;
+  color: var(--color);
+  transform: scaleY(0.8);
+  opacity: 0;
+  transform-origin: center top;
+  -webkit-animation: showContent 0.6s forwards;
+  animation: showContent 0.6s forwards;
+}
+.tabs__content_active {
+  display: block;
+}
+.section {
+  --color: #fff;
+  padding: 15px 0;
+}
+.about {
+  padding: 15px 0;
+  --primary: #8cff98;
+  --color: #121212;
+}
+@-webkit-keyframes showContent {
+  0% {
+    transform: scaleY(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+@keyframes showContent {
+  0% {
+    transform: scaleY(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
 }

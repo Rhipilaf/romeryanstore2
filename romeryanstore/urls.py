@@ -18,12 +18,14 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from shop.api import Login, Logout, Registration
-from shop.views import render_home, render_user, render_game, render_agreement, render_detail_game, render_cases
+from shop.api import Login, Logout, Registration, PolzovatelChangePhoto
+from shop.views import render_home, render_user, render_game, render_agreement, render_detail_game, render_cases, \
+    render_case
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cases', render_cases),
+    path('case/<id_case>', render_case, name="render_detail_case"),
     path('game/<id_game>', render_detail_game, name="render_detail_game"),
     path('agreement', render_agreement),
     path('game', render_game),
@@ -31,6 +33,7 @@ urlpatterns = [
     path('login', Login.as_view(), name='kabinet_login'),
     path('logout', Logout.as_view(), name='kabinet_logout'),
     path('registration', Registration.as_view(), name='kabinet_registration'),
+    path('change_photo', PolzovatelChangePhoto.as_view(), name='change_photo'),
     path('', render_home),
 ]
 

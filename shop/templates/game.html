@@ -1,140 +1,86 @@
 {% extends 'base.html' %}
 
 {% block Content %}
-<div class="fon-2">
+    <div class="fon-2">
     <div class="bg-opacity-50">
+        {% include "includes/header.html" %}
+    </div>
+</div>
+    <div class="bg-light pt-1 lb">
+        <div class="clear container good-header-container">
+
+            <div class="breadcrumbs21">
+                <a class="sil"
+                   href="/">Главная</a>
+                <span>{{ account.title }}</span>
+            </div>
+            <div class="good-title pt-3">
+                {{ account.title }}
+            </div>
+        </div>
         <div class="container">
             <div class="row">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark opacity-100">
-                    <button class="navbar-toggler position-absolute top-0 end-0" type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="container-fluid">
-                        <a class="" href="/">
-                            <img src="https://i.postimg.cc/dQnVD2TB/Icon.png" class="img-fluid" width="175"
-                                 height="60">
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page"
-                                           href="/">Главная</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="/agreement">Соглашение</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="#">Поддержка</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page"
-                                           href="https://vk.com/zdestupa">Группа
-                                            вк</a>
-                                    </li>
-                                </ul>
-                                {% if user.is_authenticated %}
-                                        {%  if user.polzovatel.image %}
-                                            <a href="/purchases"  class="signed__avatar img-fluid">
-                                        <img class="avatar" src="{{ user.polzovatel.image.url }}">
-                                            </a>
-                                            {% else %}
-                                        <a href="/purchases" class="signed__avatar img-fluid">
-                                        <img class="avatar" src="https://i.postimg.cc/jd1b2gk9/glush.jpg">
-                                        </a>
-                                            {% endif %}
-                                        {% else %}
-                                        <div>Кнопка авторизации</div>
-                                        {% endif %}
-                            </div>
-                        </a>
+                <div class="bg-white buy">
+                    <div class="buy-item_price pt-3">
+                        <span class="rub-sm">₽</span>
+                        <span>{{ account.price }}</span>
                     </div>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="bg-light pt-1 lb">
-    <div class="clear container good-header-container">
-
-        <div class="breadcrumbs21">
-            <a class="sil"
-               href="/">Главная</a>
-            <span>{{ account.title }}</span>
-        </div>
-        <div class="good-title pt-3">
-            {{ account.title }}
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="bg-white buy">
-                <div class="buy-item_price pt-3">
-                    <span class="rub-sm">₽</span>
-                    <span>{{ account.price }}</span>
-                </div>
-                <div class="buy-item-actions">
-                    <button type="button" class="button_buy">
-                        Купить
-                    </button>
-                    <div class="buy-item-info">
-                        <div class="buy-item-stats">
-                            <div class="buy-item-stat">
-                                <span>{{ account.availability }}</span>
-                                <span>в наличии</span>
-                            </div>
-                            <div class="buy-item-stat">
-                                <span>{{ account.sales }}</span>
-                                <span>продаж</span>
-                            </div>
-                            <div class="buy-item-stat">
-                                <span>0</span>
-                                <span>отзывов</span>
-                            </div>
-                        </div>
-
-                        <div class="buy-item-about">
-                            <div class="buy-item-info-title">Информация о игре</div>
-                            <div class="buy-item-details">
-                                <div>
-                                    <span>Жанр</span>
-                                    <span>{{ account.genre }}</span>
+                    <div class="buy-item-actions">
+                        <button type="button" class="button_buy">
+                            Купить
+                        </button>
+                        <div class="buy-item-info">
+                            <div class="buy-item-stats">
+                                <div class="buy-item-stat">
+                                    <span>{{ account.availability }}</span>
+                                    <span>в наличии</span>
                                 </div>
-                                <div>
-                                    <span>Платформа</span>
-                                    <span>{{ account.platform }}</span>
+                                <div class="buy-item-stat">
+                                    <span>{{ account.sales }}</span>
+                                    <span>продаж</span>
                                 </div>
-                                <div>
-                                    <span>Тип</span>
-                                    <span>{{ account.type }}</span>
+                                <div class="buy-item-stat">
+                                    <span>0</span>
+                                    <span>отзывов</span>
+                                </div>
+                            </div>
+
+                            <div class="buy-item-about">
+                                <div class="buy-item-info-title">Информация о игре</div>
+                                <div class="buy-item-details">
+                                    <div>
+                                        <span>Жанр</span>
+                                        <span>{{ account.genre }}</span>
+                                    </div>
+                                    <div>
+                                        <span>Платформа</span>
+                                        <span>{{ account.platform }}</span>
+                                    </div>
+                                    <div>
+                                        <span>Тип</span>
+                                        <span>{{ account.type }}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="tabs col-9">
-                <input type="radio" name="tab" id="tab-nav-1" checked>
-                <label for="tab-nav-1">Полное описание</label>
-
-                <input type="radio" name="tab" id="tab-nav-2" checked>
-                <label for="tab-nav-2">Отзывы</label>
-
-                <div class="tab">
-                    <div>
-                        <h2>Полное описание</h2>
-                        <p class="jb">{{ account.full_description }}</p>
-                    </div>
-                    <div>
-                        <h2>Отзывы<span class="item-main-tab-counter">0</span></h2>
-                        <p>Отзывов пока нет=3</p>
+                <div class="section col-9">
+                    <div class="section__tabs tabs">
+                        <div class="tabs__head">
+                            <div class="tabs__caption" data-tab="home">Полное описание</div>
+                            <div class="tabs__caption" data-tab="portfolio">Отзывы<span class="item-main-tab-counter">0</span></div>
+                        </div>
+                        <div class="tabs__body">
+                            <div class="tabs__content" data-tab="home"><p class="jb">{{ account.full_description }}</p>
+                            </div>
+                            <div class="tabs__content" data-tab="portfolio"><p>Отзывов пока нет=3</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-</div>
 
 {% endblock %}

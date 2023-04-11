@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block Content %}
+    <link rel="stylesheet" href="">
+    <div class="fon-2">
+        <div class="bg-opacity-50">
+            {% include "includes/header.html" %}
+        </div>
+    </div>
+    <div class="bg-light lb pt-1">
+        <div class="clear container good-header-container">
+            <div class="breadcrumbs21">
+                <a class="sil"
+                   href="/">Главная</a>
+                <span>{{ case.title }}</span>
+            </div>
+            <div class="owl-carousel owl-theme pt-5">
+                {% for i in case.gameincase_set.all %}
+                <div class="item">
+                    <div class="card">
+                        <img src="{{ i.account.img.url }}">
+                        <h4>{{ i.account.title }}</h4>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {#            <div class="owl-carousel owl-theme owl-loaded owl-drag pt-5">#}
+            {##}
+            {#                <div class="owl-stage-outer">#}
+            {#                    <div class="owl-stage"#}
+            {#                         style="transform: translate3d(-1050px, 0px, 0px); transition: all 0.25s ease 0s; width: 1800px;">#}
+            {#                        <div class="owl-item cloned" style="width: 65px; margin-right: 10px;">#}
+            {#                            <div class="item">#}
+            {#                                <h4>1</h4>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#                <div class="owl-nav disabled">#}
+            {#                    <button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span>#}
+            {#                    </button>#}
+            {#                    <button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <a class="button secondary play">Play</a>#}
+            {#            <a class="button secondary stop">Stop</a>#}
+        </div>
+
+    </div>
+
+{% endblock %}

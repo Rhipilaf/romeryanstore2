@@ -46,7 +46,7 @@ class Account(models.Model):
     genre = models.CharField('Жанр', max_length=255)
     platform = models.CharField('Платформа', max_length=255)
     type = models.CharField('Тип', max_length=255)
-    img = models.ImageField('Картинка', null=True, blank=True, db_index=True)
+    img = models.ImageField('Картинка')
 
     def get_img_admin(self):
         if self.img:
@@ -65,3 +65,25 @@ class Info(models.Model):
     class Meta:
         verbose_name = 'Инфо-карта'
         verbose_name_plural = 'Инфо-карты'
+
+class Case(models.Model):
+    class Meta:
+        verbose_name = 'Кейс'
+        verbose_name_plural = 'Кейсы'
+
+    title = models.CharField('Название', max_length=255)
+    description = models.CharField('Описание', max_length=255)
+    photo = models.ImageField('Картинка', null=True, blank=True, db_index=True)
+
+class GameInCase(models.Model):
+
+    class Meta:
+        verbose_name = 'Игра в кейсе'
+        verbose_name_plural = 'Игры в кейсе'
+
+    case = models.ForeignKey(Case, verbose_name='Кейс', on_delete=models.CASCADE)
+    account = models.ForeignKey(Account, verbose_name='Игра', on_delete=models.CASCADE)
+
+
+
+

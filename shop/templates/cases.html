@@ -1,148 +1,89 @@
 {% extends 'base.html' %}
 
 {% block Content %}
-<div class="fon-2">
-    <div class="bg-opacity-50">
+    <div class="fon-2">
+        <div class="bg-opacity-50">
+            {% include "includes/header.html" %}
+        </div>
+    </div>
+    <div class="bg-light lb pt-1">
+        <div class="clear container good-header-container">
+            <div class="breadcrumbs21">
+                <a class="sil"
+                   href="/">Главная</a>
+                <span>Ключи в кейсах</span>
+            </div>
+            <div class="good-title pt-3">
+                Ключи в кейсах
+            </div>
+            <div class="cases-collection">
+                Тут ты можешь испытать свою удачу.<br>В каждой подборке собраны позиции крутых ключей к играм.
+            </div>
+        </div>
         <div class="container">
             <div class="row">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark opacity-100">
-                    <button class="navbar-toggler position-absolute top-0 end-0" type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="container-fluid">
-                        <a class="" href="/">
-                            <img src="https://i.postimg.cc/dQnVD2TB/Icon.png" class="img-fluid" width="175"
-                                 height="60">
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page"
-                                           href="/">Главная</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="/agreement">Соглашение</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="#">Поддержка</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page"
-                                           href="https://vk.com/zdestupa">Группа
-                                            вк</a>
-                                    </li>
-                                </ul>
-                                {% if user.is_authenticated %}
-                                        {%  if user.polzovatel.image %}
-                                            <a href="/purchases"  class="signed__avatar img-fluid">
-                                        <img class="avatar" src="{{ user.polzovatel.image.url }}">
-                                            </a>
-                                            {% else %}
-                                        <a href="/purchases" class="signed__avatar img-fluid">
-                                        <img class="avatar" src="https://i.postimg.cc/jd1b2gk9/glush.jpg">
-                                        </a>
-                                            {% endif %}
-                                        {% else %}
-                                        <div>Кнопка авторизации</div>
-                                        {% endif %}
+                {% for case in cases %}
+                    <div class="col-12 col-md-4">
+                        <a href="{% url 'render_detail_case' case.id %} ">
+                            <div class="card-case rgb">
+                                {% if case.photo %}
+                                    <div class="card_image" style="background-image: url({{ case.photo.url }})"></div>
+                                {% endif %}
+                                <div class="card_text">
+                                    <h2>{{ case.title }}</h2>
+                                    <p>{{ case.description }}</p>
+                                </div>
                             </div>
                         </a>
                     </div>
-                </nav>
+                {% endfor %}
             </div>
         </div>
-    </div>
-</div>
-<div class="bg-light lb pt-1">
-    <div class="clear container good-header-container">
-        <div class="breadcrumbs21">
-            <a class="sil"
-               href="/">Главная</a>
-            <span>Ключи в кейсах</span>
-        </div>
-        <div class="good-title pt-3">
-            Ключи в кейсах
-        </div>
-        <div class="cases-collection">
-            Тут ты можешь испытать свою удачу.<br>В каждой подборке собраны позиции крутых ключей к играм.
-        </div>
-    </div>
-    <div class="container">
-    <div class="row">
-        <div class="col-12 col-md-4">
-            <div class="card-case rgb">
-                <div class="card_image"></div>
-                <div class="card_text">
-                    <h2>Сильвер кейс</h2>
-                    <p>Кейс с интересными играми по привлекательной цене</p>
+        <div class="bg-white lb">
+            <div class="container">
+                <div class="good-title pt-5">
+                    Удача или промах
+                </div>
+                <div class="cases-collection">
+                    Тут ты можешь испытать свою удачу.<br> Все или ничего!!!
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="card-case">
+                            <div class="card_image"></div>
+                            <div class="card_text">
+                                <h2>Case</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis
+                                    illum maxime quod
+                                    deserunt eligendi dolor</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card-case">
+                            <div class="card_image"></div>
+                            <div class="card_text">
+                                <h2>Case</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis
+                                    illum maxime quod
+                                    deserunt eligendi dolor</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card-case">
+                            <div class="card_image"></div>
+                            <div class="card_text">
+                                <h2>Case</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis
+                                    illum maxime quod
+                                    deserunt eligendi dolor</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-4">
-            <div class="card-case rgb">
-                <div class="card_image2 card-image"></div>
-                <div class="card_text">
-                    <h2>Золотой кейс</h2>
-                    <p>Нет не единой проигрышной позиции</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card-case rgb">
-                <div class="card_image3 card-image"></div>
-                <div class="card_text">
-                    <h2>Элитный кейс</h2>
-                    <p>Самый уникальный и выгодный</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<div class="bg-white lb">
-    <div class="container">
-        <div class="good-title pt-5">
-            Удача или промах
-        </div>
-        <div class="cases-collection">
-            Тут ты можешь испытать свою удачу.<br> Все или ничего!!!
-        </div>
-    </div>
-    <div class="container">
-    <div class="row">
-        <div class="col-12 col-md-4">
-            <div class="card-case">
-                <div class="card_image"></div>
-                <div class="card_text">
-                    <h2>Case</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod
-                        deserunt eligendi dolor</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card-case">
-                <div class="card_image"></div>
-                <div class="card_text">
-                    <h2>Case</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod
-                        deserunt eligendi dolor</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card-case">
-                <div class="card_image"></div>
-                <div class="card_text">
-                    <h2>Case</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod
-                        deserunt eligendi dolor</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
 {% endblock %}

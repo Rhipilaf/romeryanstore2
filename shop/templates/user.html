@@ -1,15 +1,57 @@
 {% extends 'base.html' %}
 
 {% block Content %}
-    <div class="fon-2">
-        <div class="bg-opacity-50">
-          {%  include "includes/header.html" %}
-        </div>
-    </div>
+    <div class="container">
+                    <div class="row">
+                        <nav class="navbar navbar-expand-lg navbar-dark bg-dark opacity-100">
+                            <button class="navbar-toggler position-absolute top-0 end-0" type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="container-fluid">
+                                <a class="" href="/">
+                                    <img src="https://i.postimg.cc/dQnVD2TB/Icon.png" class="img-fluid" width="175"
+                                         height="60">
+                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" aria-current="page"
+                                                   href="/">Главная</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" aria-current="page" href="/agreement">Соглашение</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" aria-current="page" href="#">Поддержка</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link active" aria-current="page"
+                                                   href="https://vk.com/zdestupa">Группа
+                                                    вк</a>
+                                            </li>
+                                        </ul>
+                                        {% if user.is_authenticated %}
+                                            {% if user.polzovatel.image %}
+                                                <a href="{% url "kabinet_logout" %}"><i class="bi bi-x account-exit"></i></a>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
     <div class="bg-light pb-4">
         <div class="container">
             <div class="row profile__row pt-5">
                 <div class="profile__avatar-box col-12 col-md-2 px-0">
+
+                    <div class="mb-4 d-none">
+                        <input type="file" class="mb-3 w-100 d-block avatar-input" name="avatar">
+                    </div>
+
                     {% if user.is_authenticated %}
                         {% if user.polzovatel.image %}
                             <div class="ratio ratio-1x1">
@@ -23,11 +65,13 @@
                     {% endif %}
 
                 </div>
+            {% if user.is_authenticated %}
                 <div class="profile__info-box col-12 col-md-4 pt-5">
-                    <div class="profile__id">ID 1</div>
-                    <div class="profile__name">Роман</div>
+                    <div class="profile__id">ID {{ user.id }}</div>
+                    <div class="profile__name">{{ user.polzovatel.nickname }}</div>
                     <div class="profile__balance">1000 рублей на балансе</div>
                 </div>
+            {% endif %}
                 <div class="profile__stats col-12 col-md-1 pt-5 pb-3">
                     <div class="profile__stat">
                         <span>0</span>
@@ -47,7 +91,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-light pt-3">
+    <div class="bg-light h pt-3">
         <div class="container">
             <div class="row">
                 <div class="profile__tabs">
@@ -91,8 +135,8 @@
                                         <span>Время покупки</span>
                                     </div>
                                 </div>
-                                {% empty %}
-                                123
+                            {% empty %}
+                               <p class="per">Покупок пока нет</p>
                             {% endfor %}
                         </div>
                     </div>

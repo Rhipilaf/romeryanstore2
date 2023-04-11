@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from shop.models import Purchases, Account, Info, Polzovatel
+from shop.models import Purchases, Account, Info, Polzovatel, Case, GameInCase
+
 
 class PurchasesInline(admin.TabularInline):
     model = Purchases
@@ -83,3 +84,22 @@ class PolzovatelAdmin(admin.ModelAdmin):
         'mail'
     ]
     inlines = [PurchasesInline]
+
+
+class GameInCaseInline(admin.TabularInline):
+    model = GameInCase
+    extra = 0
+    autocomplete_fields = [
+        'account'
+    ]
+
+@admin.register(Case)
+class CaseAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'title',
+        'description',
+    ]
+    inlines = [GameInCaseInline]
+
+

@@ -1,12 +1,15 @@
+import copy
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from rest_framework import status
+from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from shop.models import Polzovatel
-from shop.serializer import LoginSerializer, RegistrationSerializer
+from shop.serializer import LoginSerializer, RegistrationSerializer, PolzovatelPhotoSerializer
 
 
 class Login(APIView):
@@ -68,4 +71,18 @@ class Registration(APIView):
             login(request, user)
 
             return Response({'text': 'Регистрация прошла успешно'}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class PolzovatelChangePhoto(APIView):
+    parser_classes = (MultiPartParser, FormParser)
+
+    def post(self, request, format=None):
+
+        serializer = PolzovatelPhotoSerializer(request.user.polzovatel, request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

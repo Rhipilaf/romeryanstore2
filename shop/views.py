@@ -1,7 +1,7 @@
 
 from django.shortcuts import render
 
-from shop.models import Purchases, Account, Info
+from shop.models import Purchases, Account, Info, Case
 
 
 def render_home(request):
@@ -24,8 +24,13 @@ def render_detail_game(request, id_game):
     return render(request, "game.html", {'account': account})
 
 def render_cases(request):
-    return render(request, "cases.html", {})
+    cases = Case.objects.all()
+    return render(request, "cases.html", {'cases': cases})
 
 def render_info(request):
     infos = Info.objects.all()
     return render(request, "home.html", {'info': infos})
+
+def render_case(request, id_case):
+    case = Case.objects.get(id=id_case)
+    return render(request, "case.html", {'case': case})
