@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from shop.models import Purchases, Account, Info, Polzovatel, Case, GameInCase
+from shop.models import Purchases, Account, Info, Polzovatel, Case, GameInCase, TypeAccount, PlatformAccount
 
 
 class PurchasesInline(admin.TabularInline):
@@ -46,8 +46,8 @@ class GameAdmin(admin.ModelAdmin):
         'price',
         'availability',
         'sales',
-        'platform',
-        'type',
+        'platform_fk',
+        'type_fk',
         'get_img_admin'
     ]
 
@@ -57,11 +57,11 @@ class GameAdmin(admin.ModelAdmin):
     ]
 
     list_filter = [
-        'platform'
+        'platform_fk'
     ]
 
     ordering = [
-        'platform'
+        'platform_fk'
     ]
 
     save_as = True
@@ -102,4 +102,24 @@ class CaseAdmin(admin.ModelAdmin):
     ]
     inlines = [GameInCaseInline]
 
+@admin.register(TypeAccount)
+class TypeAccountAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'name',
+    ]
+    search_fields = [
+        'id',
+        'name',
+    ]
 
+@admin.register(PlatformAccount)
+class TypeAccountAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'name',
+    ]
+    search_fields = [
+        'id',
+        'name',
+    ]

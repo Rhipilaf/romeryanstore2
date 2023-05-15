@@ -1,12 +1,24 @@
 
 from django.shortcuts import render
 
-from shop.models import Purchases, Account, Info, Case
+from shop.models import Purchases, Account, Info, Case, PlatformAccount, TypeAccount
 
 
 def render_home(request):
+    title = request.GET.get('title', )
+    type = request.GET.get('type', )
+
     accounts = Account.objects.all()
-    return render(request, "home.html", {'accounts': accounts})
+    type = Account.objects.all()
+
+    # accounts_list = Account.object.all()
+    if title:
+       accounts = accounts.filter(title__icontains=title)
+    # if type:
+    #    accounts = accounts.filter(type__id=type)
+    return render(request, "home.html", {'accounts': accounts, 'title': title,
+                                         'tipi_acccount': TypeAccount.objects.all(),
+                                         'platformi':PlatformAccount.objects.all()  })
 
 def render_user(request):
     purchases = Purchases.objects.all()
@@ -34,3 +46,4 @@ def render_info(request):
 def render_case(request, id_case):
     case = Case.objects.get(id=id_case)
     return render(request, "case.html", {'case': case})
+

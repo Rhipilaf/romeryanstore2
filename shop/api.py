@@ -1,15 +1,18 @@
 import copy
 
+from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.core.mail import EmailMessage
 from django.shortcuts import redirect
 from rest_framework import status
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from shop.models import Polzovatel
-from shop.serializer import LoginSerializer, RegistrationSerializer, PolzovatelPhotoSerializer
+from shop.models import Polzovatel, Account
+from shop.serializer import LoginSerializer, RegistrationSerializer, PolzovatelPhotoSerializer, \
+    AccountAvtodopolnenieSerializer
 
 
 class Login(APIView):
@@ -70,6 +73,14 @@ class Registration(APIView):
                 user=user)
             login(request, user)
 
+            telo_pisma = ''.join([
+                f'<p>Добрый день. Вы успешно зарегестировались на сайте <a href="http://127.0.0.1:8000/" RomeryanStrore</a></p>',
+            ])
+
+            msg = EmailMessage('Регистрация на сайте - RomeryanStore', telo_pisma, settings.EMAIL_HOST_USER, [request.data['mail']])
+            msg.content_subtype = "html"
+            msg.send()
+
             return Response({'text': 'Регистрация прошла успешно'}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -86,3 +97,25 @@ class PolzovatelChangePhoto(APIView):
 
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class AccountAvtodopolnenieLvApi(APIView):
+    def get(self, request, format=None):
+
+        account = Account.objects.all()
+
+        if request.query_params.get("term"):
+            term = request.GET.get("term")
+            account = account.filter(title__icontains=term)
+
+        if request.query_params.get("type"):
+            type_id = request.GET.get("type")
+            account = account.filter(type_fk_id=type_id)
+
+        if request.query_params.get("platforma"):
+            platform_id = request.GET.get("platforma")
+            account = account.filter(platform_fk_id=platform_id)
+
+
+        serializer = AccountAvtodopolnenieSerializer(account, many=True)
+        return Response(serializer.data)

@@ -1709,3 +1709,24 @@ body {
     opacity: 1;
   }
 }
+
+.owl-carousel {
+  margin: 0 auto;
+  width: 90%;
+}
+.owl-item {
+  text-align: center;
+}
+.owl-item img {
+  max-height: 200px;
+  margin: 0 auto;
+}
+.case-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.case-price {
+  font-size: 1.2em;
+  margin-top: 5px;
+}

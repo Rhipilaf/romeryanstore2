@@ -11,35 +11,32 @@
             <hr>
             <div class="container">
                 <div class="row">
-                    <div class="card-one col-12 col-md-7 mb-4">
+                    <div class="card-one col-12 col-md-5 mb-4">
                         <div class="card-content">
-                            <h2 class="card-title">Лицензионные кейсы</h2>
-                            <p class="card-body py-5">Испытай удачу! Может удача сегодня на твоей стороне.</p>
+                            <h2 class="card-title">Ключи на игры</h2>
+                            <p class="card-body py-5">Заходи!Найдешь что ищешь=3</p>
                             <a href="/cases" class="button">Узнать больше</a>
                         </div>
                     </div>
-                    <div class="card-two card-one col-12 col-md-4 mb-4 offset-md-1">
+                    <div class="card-one col-12 col-md-5 mb-4 offset-md-2">
                         <div class="card-content">
-                            <h2 class="card-title">Кейсы с аккаунтами</h2>
-                            <p class="card-body py-4">Испытай удачу! Наши самые лучшие рандомы , подобронные под ваши
-                                предпочтения.</p>
+                            <h2 class="card-title">Что-то новое</h2>
+                            <br>
+                            <br>
+                            <p class="card-body">В разработке <br> Будь готов! <br></p>
                             <a href="#" class="button">Узнать больше</a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="card-three card-one col-12 col-md-4 mb-5">
+                    <div class="card-one col-12 col-md-5 mb-4">
                         <div class="card-content">
-                            <h4 class="card-title">Скидки!</h4>
-                            <br>
-                            <br>
-                            <p class="card-body">Зимние скидки. Подобронные под вас. Аккаунты с играми , которые вас
-                                порадуют.
-                                Испытай свою удачу!</p>
-                            <a href="#" class="button">Узнать больше</a>
+                            <h2 class="card-title">Ключи на игры</h2>
+                            <p class="card-body py-5">Заходи!Найдешь что ищешь=3</p>
+                            <a href="/cases" class="button">Узнать больше</a>
                         </div>
                     </div>
-                    <div class="card-one col-12 col-md-7 mb-5 offset-md-1">
+                    <div class="card-one col-12 col-md-5 mb-4 offset-md-2">
                         <div class="card-content">
                             <h2 class="card-title">Что-то новое</h2>
                             <br>
@@ -110,30 +107,32 @@
                         <h2 class="  pt-4"><b>Каталог товаров</b></h2>
                         <div class="row">
                             <div class="col-12 col-md-4 mb-3">
+
                                 <div class="search-form ">
-                                    <input class="search-form-txt" type="text" placeholder="Какую игру ищем?">
-                                    <button class="search-form-btn">
+                                    <input class="search-form-txt"    name="title" type="text" placeholder="Какую игру ищем?">
+                                    <button type="submit" class="search-form-btn">
                                         <i class="bi bi-search"></i>
                                     </button>
                                 </div>
+
                             </div>
                             <div class="col-12 col-md-4 mb-3">
                                 <div class="select-one">
-                                    <select name="select-category" id="1">
-                                        <option value="1">Все типы товаров</option>
-                                        <option value="2">Ключи</option>
-                                        <option value="3">Аккаунты</option>
+                                    <select name="type" class="search-form-type ">
+                                        <option  value="">Все типы</option>
+                                        {% for tip in tipi_acccount %}
+                                        <option value="{{ tip.id }}">{{ tip.name }}</option>
+                                          {% endfor %}
                                     </select>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 mb-3">
                                 <div class="select-two select-one">
-                                    <select name="select-category" id="2">
-                                        <option value="1">Все площадки</option>
-                                        <option value="2">STEAM</option>
-                                        <option value="3">UPLAY</option>
-                                        <option value="4">ORIGIN</option>
-                                        <option value="5">OTHER</option>
+                                    <select name="select-category" class="search-form-platformi">
+                                        <option value="">Все площадки</option>
+                                        {% for platforma in platformi %}
+                                            <option value="{{ platforma.id }}">{{ platforma.name }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -141,7 +140,7 @@
 
                     </div>
                 </div>
-                <div class="row">
+                <div class="row card-place">
                     {% for i_account in accounts %}
                         <div class="card-anim pt-4 col-12 col-md-3 mb-4">
                             <div class="card-img">
@@ -162,6 +161,8 @@
                                 </div>
                             </div>
                         </div>
+                        {% empty %}
+                        <div class="alert alert-danger">Ничего не найдено</div>
                     {% endfor %}
                 </div>
             </div>

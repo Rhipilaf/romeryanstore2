@@ -15,17 +15,18 @@
 </head>
 <body>
 <div class="wrapper">
-   <div class="uvedomlenie-wrap ">
-    <div id="uvedomlenie" style="opacity:1!important;" class="toast bg-white fade hide" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header uvedomlenie-header bg-danger text-light">
-            <strong class="mr-auto uvedomlenie-title h6 text-uppercase pt-2">Уведомление</strong>
-            <div type="button" class="ms-auto mb-1 btn-zakrit" data-bs-dismiss="toast">
-                <span aria-hidden="true">×</span>
+    <div class="uvedomlenie-wrap ">
+        <div id="uvedomlenie" style="opacity:1!important;" class="toast bg-white fade hide" role="alert"
+             aria-live="assertive" aria-atomic="true">
+            <div class="toast-header uvedomlenie-header bg-danger text-light">
+                <strong class="mr-auto uvedomlenie-title h6 text-uppercase pt-2">Уведомление</strong>
+                <div type="button" class="ms-auto mb-1 btn-zakrit" data-bs-dismiss="toast">
+                    <span aria-hidden="true">×</span>
+                </div>
             </div>
+            <div class="toast-body uvedomlenie-telo h6">Ошибка авторизации</div>
         </div>
-        <div class="toast-body uvedomlenie-telo h6">Ошибка авторизации</div>
     </div>
-</div>
     <div class="content_wrapper">
         {% block Content %}
         {% endblock %}
@@ -62,7 +63,7 @@
     </footer>
 </div>
 <form method="post" action="{% url "kabinet_login" %}" class="modal fade modal-login" id="exampleModal" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
     {% csrf_token %}
     <div class="modal-dialog">
         <div class="modal-content">
@@ -103,7 +104,8 @@
         </div>
     </div>
 </form>
-<form method="post" action="{% url "kabinet_registration" %}" class="modal fade modal-reg" id="modal-registrazia" tabindex="-1"
+<form method="post" action="{% url "kabinet_registration" %}" class="modal fade modal-reg" id="modal-registrazia"
+      tabindex="-1"
       aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -115,7 +117,7 @@
             </div>
             <div class="modal-body">
                 <div class="form__group field">
-                    <input  class="form__field"
+                    <input class="form__field"
                            placeholder="Nickname/Email" name="nickname" required>
                     <label for="name" class="form__label">Никнейм</label>
                 </div>
@@ -165,6 +167,17 @@
                            placeholder="Email" name="Email"
                            id="name" required>
                     <label for="name" class="form__label">Email</label>
+
+                    <div class="form__group field">
+                        <input type="password" class="form__field"
+                               placeholder="password" name="parol" required>
+                        <label for="password" class="form__label">Старый пароль</label>
+                    </div>
+                <div class="form__group field">
+                        <input type="password" class="form__field"
+                               placeholder="password" name="parol" required>
+                        <label for="password" class="form__label">Новый пароль</label>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -195,5 +208,6 @@
 <script src="{% static 'jquery-3.6.3.min.js' %}"></script>
 <script src="{% static 'owl.carousel.min.js' %}"></script>
 <script src="{% static 'script.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>

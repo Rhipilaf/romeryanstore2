@@ -31,6 +31,25 @@ class Purchases(models.Model):
     def __str__(self):
         return self.account
 
+class TypeAccount(models.Model):
+    class Meta:
+        verbose_name = 'Тип'
+        verbose_name_plural = 'Типы'
+
+    name = models.CharField('Название', max_length=255)
+
+    def __str__(self):
+        return self.name
+
+class PlatformAccount(models.Model):
+    class Meta:
+        verbose_name = 'Платформа'
+        verbose_name_plural = 'Платформы'
+
+    name = models.CharField('Название', max_length=255)
+
+    def __str__(self):
+        return self.name
 
 class Account(models.Model):
     class Meta:
@@ -44,8 +63,8 @@ class Account(models.Model):
     availability = models.CharField('Наличие', max_length=255)
     sales = models.CharField('Кол-во продаж', max_length=255)
     genre = models.CharField('Жанр', max_length=255)
-    platform = models.CharField('Платформа', max_length=255)
-    type = models.CharField('Тип', max_length=255)
+    type_fk = models.ForeignKey(TypeAccount, verbose_name='Тип', on_delete=models.SET_NULL, null=True, blank=True)
+    platform_fk = models.ForeignKey(PlatformAccount, verbose_name='Платформа', on_delete=models.SET_NULL, null=True, blank=True)
     img = models.ImageField('Картинка')
 
     def get_img_admin(self):
@@ -83,6 +102,7 @@ class GameInCase(models.Model):
 
     case = models.ForeignKey(Case, verbose_name='Кейс', on_delete=models.CASCADE)
     account = models.ForeignKey(Account, verbose_name='Игра', on_delete=models.CASCADE)
+
 
 
 

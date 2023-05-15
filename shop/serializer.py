@@ -1,6 +1,8 @@
 from rest_framework import serializers
+from django.templatetags.static import static
+from rest_framework import serializers
 
-from shop.models import Polzovatel
+from shop.models import Polzovatel, Account
 
 
 class LoginSerializer(serializers.Serializer):
@@ -26,3 +28,8 @@ class PolzovatelPhotoSerializer(serializers.ModelSerializer):
         fields = [
             'image',
         ]
+
+class AccountAvtodopolnenieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        fields = ['id', 'title', 'description', 'img']
