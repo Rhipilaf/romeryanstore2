@@ -9,6 +9,7 @@ class PurchasesInline(admin.TabularInline):
 
 @admin.register(Purchases)
 class PurchasesAdmin(admin.ModelAdmin):
+    icon_name = 'home'
     list_display = [
         'id',
         'account',
@@ -38,6 +39,7 @@ class PurchasesAdmin(admin.ModelAdmin):
 
 @admin.register(Account)
 class GameAdmin(admin.ModelAdmin):
+    icon_name = 'home'
     list_display = [
         'id',
         'title',
@@ -69,6 +71,7 @@ class GameAdmin(admin.ModelAdmin):
 
 @admin.register(Info)
 class InfoAdmin(admin.ModelAdmin):
+    icon_name = 'home'
     list_display = [
         'id',
         'title',
@@ -77,6 +80,7 @@ class InfoAdmin(admin.ModelAdmin):
 
 @admin.register(Polzovatel)
 class PolzovatelAdmin(admin.ModelAdmin):
+    icon_name = 'home'
     list_display = [
         'id',
         'nickname',
@@ -95,6 +99,7 @@ class GameInCaseInline(admin.TabularInline):
 
 @admin.register(Case)
 class CaseAdmin(admin.ModelAdmin):
+    icon_name = 'home'
     list_display = [
         'id',
         'title',
@@ -104,6 +109,7 @@ class CaseAdmin(admin.ModelAdmin):
 
 @admin.register(TypeAccount)
 class TypeAccountAdmin(admin.ModelAdmin):
+    icon_name = 'home'
     list_display = [
         'id',
         'name',
@@ -115,6 +121,7 @@ class TypeAccountAdmin(admin.ModelAdmin):
 
 @admin.register(PlatformAccount)
 class TypeAccountAdmin(admin.ModelAdmin):
+    icon_name = 'home'
     list_display = [
         'id',
         'name',
